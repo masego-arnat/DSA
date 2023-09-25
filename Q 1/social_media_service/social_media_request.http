@@ -1,0 +1,53 @@
+# create a lecturer
+
+
+
+
+# get lecturer with staff num  
+# GET http://localhost:9090/social-media/lecturerStuffNumer/1
+
+# get lecturer with office num  
+
+# GET http://localhost:9090/social-media/lecturerOfficeNumer/140
+# # get all  lecturers in same course name
+# GET http://localhost:9090/social-media/lecturerSameCourse/Computer Science
+ 
+# # get all  lecturers in same faculty
+
+# GET http://localhost:9090/social-media/lecturerSamefaculty/Law
+##adding new  lecturer
+ 
+
+
+
+
+# POST http://localhost:9090/social-media/lecturerAdd
+# Content-Type: application/json
+
+# {
+#     "faculty": "MeTC",
+#     "fname": "James King",
+#     "age": 32,
+#     "course": "Thhwe",
+#     "OfficeNum": "34"
+# }
+
+
+
+
+# POST  http://localhost:9090/social-media/lecturerUpdate
+# Content-Type: application/json
+
+# {
+#     "staffNum" : 1,
+#     "faculty": "MsTC",
+#     "fname": "Jamses King",
+#     "age": 32,
+#     "course": "Thhdwe",
+#     "OfficeNum": "34"
+# }
+
+
+
+# delete lecturer with staff num  
+GET http://localhost:9090/social-media/lecturerDelete/26
