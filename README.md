@@ -1,4 +1,5 @@
-# DSA Question 1 
+# Question 1: Restful APIs
+
 The problem centers on developing a Restful API for effectively managing staff, their offices, and 
 allocated courses within the Faculty of Computing and Informatics. These offices can 
 accommodate multiple lecturers. A lecturer is characterized by essential attributes, including a 
