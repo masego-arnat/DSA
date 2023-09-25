@@ -5,3 +5,6 @@ accommodate multiple lecturers. A lecturer is characterized by essential attribu
 staff number, office number, staff name, title, and a list of the courses they are teaching. 
 Additionally, a course is characterized by specific details such as the course name, course code, 
 and NQF (National Qualifications Framework) level.
+
+# Question 2: Remote invocation
+
