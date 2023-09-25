@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+service Assessment {
+  
+  
+    rpc create_user(stream UserRequest) returns (CreateUserResponse);
+
+  
+    
+    rpc login(LoginRequest) returns (LoginResponse);
+    rpc addBook (Book) returns (CustomResponse);
+    rpc listAvailableBooks (ListAvailableBooksRequest) returns (RepeatedBook);
+   
+ 
+       
+     rpc removeBook (RemoveBookRequest) returns (RemoveBookResponse);
+    rpc locateBook (LocateBookRequest) returns (LocateBookResponse);
+    rpc borrowBook(BorrowBookRequest) returns (BorrowBookResponse);
+    
+
+}
+
+message RemoveBookResponse {
+       Book books = 1;
+}
+
+
+message RemoveBookRequest {
+    string isbn = 1;
+}
+
+message ListAvailableBooksRequest  {
+    string isbn = 1;
+}
+
+message BorrowBookResponse{
+      bool status = 6; 
+}
+message LocateBookRequest {
+    string isbn = 1;
+}
+ 
+message BorrowBookRequest {
+    string userId = 1;
+    string isbn = 2;
+}
+message LocateBookResponse {
+    string location = 1;
+    bool available = 2;
+}
+
+ 
+ 
+message CustomResponse {
+  string message = 1;
+}
+ 
+ message AssessorRequest {
+    string courseCode = 1;
+    int32 assignmentID = 2;
+    string assessorCode = 3;
+}
+
+message LoginRequest {
+    string userID = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    bool success = 1;
+    Profiles profile = 2;
+}
+
+
+
+
+
+
+
+
+
+enum Profiles {
+    LEARNER = 0;
+    ADMINISTRATOR = 1;
+    ASSESSOR = 2;
+}
+
+message UserRequest {
+    string userCode = 1;
+    string name = 2;
+    Profiles profile = 3;
+    string password = 4;
+}
+
+
+
+
+
+message CreateUserData {
+    string userCode = 1;
+    string status = 2;
+}
+
+message CreateUserResponse {
+    repeated CreateUserData data = 1;
+}
+message Book {
+    string title = 1;
+    string author_1 = 2;
+    string author_2 = 3;
+    string location = 4;
+    string isbn = 5;
+    bool status = 6;
+}
+message RepeatedBook
+{
+     repeated Book data = 1;
+}
+
+ 
+
+
