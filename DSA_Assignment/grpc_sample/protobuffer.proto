@@ -1,0 +1,126 @@
+import ballerina/grpc;
+import io.ballerina.runtime.api.values.BObject;
+
+// Define a configurable port for the gRPC service
+configurable int port = 9090;
+
+// Define a record type for representing a Book
+record Book {
+    string title;
+    string author_1;
+    string author_2;
+    string location;
+    string isbn;
+    boolean status;
+};
+
+// Define an array to store books as a simple in-memory database
+Book[] books = [];
+
+// Define a gRPC service for the Library
+@grpc:Descriptor {
+    value: DESCRIPTOR_LIBRARY_DESC
+}
+service "Library" on new grpc:Listener(port) {
+
+    // Define a remote function to add a book
+    remote function addBook(Book request) returns Book {
+        // Implement logic to add a book here
+        // Add the book to the 'books' array
+        books.push(request);
+        // Return the added book
+        return request;
+    }
+
+    // Define a remote function to create users (not implemented in this template)
+    remote function createUsers(stream User users) returns UserResponse {
+        // Implement logic to create users here
+    }
+
+    // Define a remote function to update a book (not implemented in this template)
+    remote function updateBook(Book request) returns Book {
+        // Implement logic to update a book here
+    }
+
+    // Define a remote function to remove a book (not implemented in this template)
+    remote function removeBook(Book request) returns BookListResponse {
+        // Implement logic to remove a book here
+    }
+
+    // Define a remote function to list available books (not implemented in this template)
+    remote function listAvailableBooks(Empty request) returns BookListResponse {
+        // Implement logic to list available books here
+    }
+
+    // Define a remote function to locate a book (not implemented in this template)
+    remote function locateBook(Book request) returns LocationResponse {
+        // Implement logic to locate a book here
+    }
+
+    // Define a remote function to borrow a book (not implemented in this template)
+    remote function borrowBook(BorrowRequest request) returns BorrowResponse {
+        // Implement logic to borrow a book here
+    }
+}
+
+// Import necessary Protocol Buffer modules
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+// Define the Protocol Buffer service for the Library
+service Library {
+    // RPC to add a book
+    rpc addBook(Book) returns (Book);
+
+    // RPC to create users
+    rpc createUsers(stream User) returns (UserResponse);
+
+    // RPC to update a book
+    rpc updateBook(Book) returns (Book);
+
+    // RPC to remove a book
+    rpc removeBook(Book) returns (BookListResponse);
+
+    // RPC to list available books
+    rpc listAvailableBooks(Empty) returns (BookListResponse);
+
+    // RPC to locate a book
+    rpc locateBook(Book) returns (LocationResponse);
+
+    // RPC to borrow a book
+    rpc borrowBook(BorrowRequest) returns (BorrowResponse);
+}
+
+// Define the structure of a User message with user details
+message User {
+    string user_id = 1;
+    string username = 2;
+    bool is_librarian = 3;
+}
+
+// Define the structure of the response containing created users
+message UserResponse {
+    repeated User users = 1;
+}
+
+// Define a response message containing the location of a book
+message LocationResponse {
+    string location = 1;
+}
+
+// Define a request message for borrowing a book
+message BorrowRequest {
+    string user_id = 1;
+    string isbn = 2;
+}
+
+// Define a response message for the result of a book borrowing operation
+message BorrowResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// Define a response message containing a list of books
+message BookListResponse {
+    repeated Book books = 1;
+}
