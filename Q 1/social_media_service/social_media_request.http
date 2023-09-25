@@ -30,6 +30,9 @@
 #     "age": 32,
 #     "course": "Thhwe",
 #     "OfficeNum": "34"
+    
+ 
+ 
 # }
 
 
@@ -39,7 +42,7 @@
 # Content-Type: application/json
 
 # {
-#     "staffNum" : 1,
+#     "staffNum" : 2,
 #     "faculty": "MsTC",
 #     "fname": "Jamses King",
 #     "age": 32,
@@ -50,4 +53,4 @@
 
 
 # delete lecturer with staff num  
-GET http://localhost:9090/social-media/lecturerDelete/26
+GET http://localhost:9090/social-media/lecturerDelete/2

@@ -11,10 +11,11 @@ type Lecturer record {|
 |};
 
 type NewLecturer record {|
-    // readonly string staffNum;
+    //  string title;
     string faculty;
     string fname;
     int age;
+    // string title;
     string course;
     string OfficeNum;
 |};
@@ -24,10 +25,11 @@ type UpdateLecturer record {|
     string faculty;
     string fname;
     int age;
-    string course;
+   string course;
     string OfficeNum;
 |};
 
+ 
 // Define a table with multiple keys
 
 type ErrorDetails record {|
@@ -42,10 +44,10 @@ type UserNotFound record {|
 
 table<Lecturer> key(staffNum) lecturers = table [
 
-    {staffNum: 1, fname: "John", age: 32, OfficeNum: "100", faculty: "Science", course: "Computer Science"},
+    {staffNum: 1, fname: "John", age: 32, OfficeNum: "100", faculty: "Science", course: "Computer Science, Math"},
     {staffNum: 2, fname: "John Doe", age: 32, OfficeNum: "100", faculty: "Science", course: "Computer Science"},
     {staffNum: 3, fname: "John", age: 32, OfficeNum: "140", faculty: "Law", course: "Commercial"},
-    {staffNum: 4, fname: "John", age: 32, OfficeNum: "150", faculty: "Law", course: "Customary Law"}
+    {staffNum: 4, fname: "John", age: 32, OfficeNum: "140", faculty: "Law", course: "Customary Law"}
 
 ];
 
@@ -162,7 +164,7 @@ isolated service /social\-media on new http:Listener(9090) {
     }
 
     resource function get lecturerDelete/[int staffNum]() returns table<Lecturer>|error|UserNotFound|http:Ok {
-     
+
         table<Lecturer> highPaidEmployees = from Lecturer emp in lecturers
             where emp.staffNum == staffNum
             // try == emp.staffNum
@@ -179,9 +181,8 @@ isolated service /social\-media on new http:Listener(9090) {
             int KK = emp.staffNum;
             Lecturer remove = lecturers.remove(KK);
 
- 
             io:println("The removed Entry is: ", remove);
- 
+
         }
 
         return http:OK;
