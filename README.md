@@ -8,4 +8,9 @@ Additionally, a course is characterized by specific details such as the course n
 and NQF (National Qualifications Framework) level.
 
 # Question 2: Remote invocation
-
+Your task is to design and implement a library system using gRPC that allows two types of users—
+a student and a librarian—to interact with the system. The system should provide essential 
+functionalities for managing books, borrowing them, and returning them. The student should be 
+able to get a list of available books, borrow a book, search for a book, locate it, and return a book. 
+On the other hand, a librarian should be able to add a book, update a book, remove a book, and list 
+all the borrowed books.
