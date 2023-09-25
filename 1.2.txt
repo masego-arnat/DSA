@@ -1,0 +1,49 @@
+import ballerina/grpc;
+
+// Define a configurable port for the gRPC service
+configurable int port = 9090;
+
+// Define the gRPC listener
+listener grpc:Listener libraryListener = new (port);
+
+// Define the service based on your Protocol Buffer contract
+@grpc:Descriptor {
+    value: DESCRIPTOR_LIBRARY_DESC
+}
+service "Library" on libraryListener {
+
+    // Remote function to add a book to the library
+    remote function addBook(library.Book request) returns library.Book {
+        // Implement the logic to add a book here
+    }
+
+    // Remote function to create users with a stream of user objects
+    remote function createUsers(stream library.User users) returns library.UserResponse {
+        // Implement the logic to create users here
+    }
+
+    // Remote function to update a book in the library
+    remote function updateBook(library.Book request) returns library.Book {
+        // Implement the logic to update a book here
+    }
+
+    // Remote function to remove a book from the library
+    remote function removeBook(library.Book request) returns library.BookListResponse {
+        // Implement the logic to remove a book here
+    }
+
+    // Remote function to list available books in the library
+    remote function listAvailableBooks(library.Empty request) returns library.BookListResponse {
+        // Implement the logic to list available books here
+    }
+
+    // Remote function to locate a book in the library
+    remote function locateBook(library.Book request) returns library.LocationResponse {
+        // Implement the logic to locate a book here
+    }
+
+    // Remote function to borrow a book from the library
+    remote function borrowBook(library.BorrowRequest request) returns library.BorrowResponse {
+        // Implement the logic to borrow a book here
+    }
+}
