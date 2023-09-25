@@ -1,8 +1,4 @@
 # create a lecturer
-
-
-
-
 # get lecturer with staff num  
 # GET http://localhost:9090/social-media/lecturerStuffNumer/1
 
